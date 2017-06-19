@@ -16,7 +16,7 @@
     ],
     "require": {
         "laravel/framework": ">=5.1.0",
-        "php": ">=5.5.9",
+        "php": ">=7.0.0",
         "codeception/codeception" :">=2.0.0"
     },
     "autoload": {
