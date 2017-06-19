@@ -1,0 +1,27 @@
+{
+    "name": "tecbeast/laravel-codeception-email-assertions",
+    "description": "This Module for codeception should enable easy assertions for emails with laravel 5.1+",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/tecbeast42/laravel-codeception-email-assertions"
+        }
+    ],
+    "authors": [
+        {
+            "name": "TecBeast",
+            "email": "kontakt@tecbeast.de"
+        }
+    ],
+    "require": {
+        "laravel/framework": ">=5.1.0",
+        "php": ">=5.5.9",
+        "codeception/codeception" :">=2.3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Codeception\\Module\\": "src"
+        }
+    }
+}
