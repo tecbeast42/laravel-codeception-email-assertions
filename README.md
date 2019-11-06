@@ -1,7 +1,7 @@
 # Installation
 
 ```
-    composer require tecbeast/laravel-codeception-email-assertions
+    composer require tecbeastflo/laravel-codeception-email-assertions
 ```
 
 Adapt codeceptions *.suite.yml file.
