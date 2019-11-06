@@ -1,5 +1,5 @@
 {
-    "name": "tecbeastflo/laravel-codeception-email-assertions.git",
+    "name": "tecbeastflo/laravel-codeception-email-assertions",
     "description": "This Module for codeception should enable easy assertions for emails with laravel 5.1+",
     "license": "MIT",
     "repositories": [
