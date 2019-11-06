@@ -20,8 +20,14 @@ class EmailSpyPlugin implements Swift_Events_EventListener {
         return $this->message;
     }
 
+    public function getMessages()
+    {
+        return $this->messages;
+    }
+
     public function clear()
     {
         $this->message = null;
+        $this->messages = null;
     }
 }

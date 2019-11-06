@@ -76,4 +76,14 @@ class EmailAssertions extends Module
     {
         $this->spy->clear();
     }
+
+    public function grabMessage() 
+    {
+        return $this->spy->getMessage();
+    }
+
+    public function grabMessages() 
+    {
+        return $this->spy->getMessages();
+    }
 }
