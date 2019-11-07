@@ -12,7 +12,7 @@ class EmailSpyPlugin implements Swift_Events_EventListener {
     public function beforeSendPerformed($event)
     {
         $this->message = $event->getMessage();
-        $this->messages = $this->messages ? $this->messages->push($event->getMessage()) : collect($event->getMessage()); 
+        $this->messages = $this->messages ? $this->messages->push($event->getMessage()) : collect([$event->getMessage()]);
     }
 
     public function getMessage()
