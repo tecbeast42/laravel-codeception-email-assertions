@@ -41,8 +41,7 @@ class EmailAssertions extends Module
 
     public function seeEmailWasNotSentTo(String $to)
     {
-        $this->assertNotNull($this->spy->getMessage(), 'No email was sent');
-        $recievers = array_keys($this->spy->getMessage()->getTo());
+        $recievers = $this->spy->getMessage() !== null ? array_keys($this->spy->getMessage()->getTo()) : [];
         $this->assertNotContains($to, $recievers, 'Email was not sent to ' . implode(';', $recievers));
     }
 
@@ -55,8 +54,7 @@ class EmailAssertions extends Module
 
     public function seeEmailWasNotSentFrom(String $from)
     {
-        $this->assertNotNull($this->spy->getMessage(), 'No email was sent');
-        $recievers = array_keys($this->spy->getMessage()->getFrom());
+        $recievers = $this->spy->getMessage() !== null ? array_keys($this->spy->getMessage()->getTo()) : [];
         $this->assertNotContains($from, $recievers, 'Email was not sent from ' . implode(';', $recievers));
     }
 
@@ -72,6 +70,12 @@ class EmailAssertions extends Module
         $this->assertNotRegexp("/$text/", $this->spy->getMessage()->getBody());
     }
 
+    public function assertCountEmailMessages(int $count)
+    {
+        $this->assertCount($count, $this->spy->getMessages(), 'Number of email messages are '. 
+            $this->spy->getMessages()->count().' instead of expected '.$count );
+    }
+    
     public function clearEmails()
     {
         $this->spy->clear();
