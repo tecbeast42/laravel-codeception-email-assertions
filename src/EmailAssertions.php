@@ -3,7 +3,7 @@
 namespace Codeception\Module;
 
 use Codeception\Module;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class EmailAssertions extends Module
 {
@@ -15,7 +15,14 @@ class EmailAssertions extends Module
     }
 
     public function _before(\Codeception\TestInterface $test) {
-        Mail::getSwiftMailer()->registerPlugin($this->spy);
+        if(config('mail.driver')) {
+            Mail::getSwiftMailer()->registerPlugin($this->spy);
+        } else {
+            //Register the spy to each mailer
+            foreach(config('mail.mailers') as $mailer => $val) {
+                Mail::mailer($mailer)->getSwiftMailer()->registerPlugin($this->spy);
+            }
+        }
     }
 
     public function _after(\Codeception\TestCase $test) {
