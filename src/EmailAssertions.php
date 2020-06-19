@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Mail;
 
 class EmailAssertions extends Module
 {
+    protected $config = ['mailers' => ['smtp']];
+
     protected $spy;
 
-    public function __construct()
+    public function _initialize()
     {
         $this->spy = new EmailSpyPlugin;
     }
@@ -19,7 +21,7 @@ class EmailAssertions extends Module
             Mail::getSwiftMailer()->registerPlugin($this->spy);
         } else {
             //Register the spy to each mailer
-            foreach(config('mail.mailers') as $mailer => $val) {
+            foreach($this->config['mailers'] as $mailer) {
                 Mail::mailer($mailer)->getSwiftMailer()->registerPlugin($this->spy);
             }
         }
